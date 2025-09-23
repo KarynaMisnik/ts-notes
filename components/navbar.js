@@ -1,3 +1,5 @@
+import "./timestamp.js";
+
 class MyNavbar extends HTMLElement {
   constructor() {
     super();
