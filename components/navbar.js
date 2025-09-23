@@ -7,8 +7,9 @@ class MyNavbar extends HTMLElement {
     shadow.innerHTML = `
       <style>
         nav {
-          background: #333;
+          background: #2b2b2b;
           padding: 20px;
+          font-family: Roboto, sans-serif;
         }
         nav a {
           color: white;
