@@ -8,7 +8,7 @@ class MyNavbar extends HTMLElement {
       <style>
         nav {
           background: #333;
-          padding: 10px;
+          padding: 20px;
         }
         nav a {
           color: white;
