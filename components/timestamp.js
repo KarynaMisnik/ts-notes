@@ -18,7 +18,7 @@ class MyTime extends HTMLElement {
           font-family: var(--primary-font);
           font-size: var(--font-size-sm); 
           color: var(--secondary-color);
-          margin: 0;
+          margin: 5px 0 0 0;
           padding: 0,
 
   }

@@ -17,7 +17,6 @@ class CustomNavbar extends HTMLElement {
           align-items: center;
           border-bottom: 4px solid var(--primary-color);
           color: var(--primary-color);
-          padding: 20px;
           font-family: Roboto, sans-serif;
           box-sizing: border-box;
         }
@@ -34,12 +33,13 @@ class CustomNavbar extends HTMLElement {
           display: flex;
           flex-direction: column;
           align-items: center;
+          margin: 10px;
         }
 
         .logo {
           width: 50px;
           height: 50px;
-          margin-right: 10px;
+          object-fit: contain;
         }
 
         h3 {
