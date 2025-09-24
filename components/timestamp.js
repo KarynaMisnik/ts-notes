@@ -1,22 +1,24 @@
+import { sharedStyles } from "../styles.js";
+
 class MyTime extends HTMLElement {
   constructor() {
     super();
 
     // Create Shadow DOM (isolated styles/HTML)
     this.shadow = this.attachShadow({ mode: "open" });
+    this.shadowRoot.adoptedStyleSheets = [sharedStyles];
 
     // Initial HTML
-    this.shadow.innerHTML = `
+    this.shadowRoot.innerHTML = `
       <style>
+         ${sharedStyles}  
+
         .clock {
-          font-family: Roboto, sans-serif;
-          font-size: 1.5rem;
-          background: pink;
-          color: red;
+          font-family: var(--primary-font);
+          font-size: var(--font-size-sm); 
+          color: var(--secondary-color);
           padding: 10px 20px;
-          border-radius: 8px;
           display: inline-block;
-        }
       </style>
       <div class="clock">--:--:--</div>
     `;
