@@ -59,6 +59,13 @@ class CustomNavbar extends HTMLElement {
           text-decoration: none;
         }
 
+        .btn {
+       background-color: var(--primary-color);
+       color: white;
+       border: none;
+       margin: 0 5px;
+          }
+
         /* Responsive Logo Sizes */
         @media (min-width: 768px) {
           .logo {
@@ -86,6 +93,8 @@ class CustomNavbar extends HTMLElement {
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
+            <button class="btn login-staff">Staff Login</button>
+            <button class="btn company-login">Company Login</button>
           </div>
         </div>
       </div>

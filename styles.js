@@ -46,7 +46,7 @@ small { font-size: var(--font-size-sm); }
 button {
 
   display: inline-block;
-  padding: 0.75rem 1.5rem;
+  padding: 1.5rem 1.5rem;
   font-size: var(--font-size-base);
   font-weight: 600;
   border-radius: 0.5rem;
