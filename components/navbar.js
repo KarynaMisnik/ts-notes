@@ -4,17 +4,18 @@ import { sharedStyles } from "../styles.js";
 class CustomNavbar extends HTMLElement {
   constructor() {
     super();
-    const shadow = this.attachShadow({ mode: "open" });
+    this.shadow = this.attachShadow({ mode: "open" });
+    this.shadowRoot.adoptedStyleSheets = [sharedStyles];
 
-    shadow.innerHTML = `
+    this.shadowRoot.innerHTML = `
+     
       <style>
-        
+       
         .nav-container {
           display: flex;
           flex-direction: column;
           align-items: center;
           border-bottom: 4px solid var(--primary-color);
-          background-color: #2b2b2b;
           color: var(--primary-color);
           padding: 20px;
           font-family: Roboto, sans-serif;
@@ -39,7 +40,6 @@ class CustomNavbar extends HTMLElement {
           width: 50px;
           height: 50px;
           margin-right: 10px;
-          transition: width 0.3s, height 0.3s;
         }
 
         h3 {

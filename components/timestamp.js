@@ -10,13 +10,18 @@ class MyTime extends HTMLElement {
 
     // Initial HTML
     this.shadowRoot.innerHTML = `
+  
       <style>
-         ${sharedStyles}  
+         
 
         .clock {
           font-family: var(--primary-font);
           font-size: var(--font-size-sm); 
           color: var(--secondary-color);
+          margin: 0;
+          padding: 0,
+
+  }
       </style>
       <div class="clock">--:--:--</div>
     `;
