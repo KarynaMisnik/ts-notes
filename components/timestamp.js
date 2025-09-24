@@ -17,8 +17,6 @@ class MyTime extends HTMLElement {
           font-family: var(--primary-font);
           font-size: var(--font-size-sm); 
           color: var(--secondary-color);
-          padding: 10px 20px;
-          display: inline-block;
       </style>
       <div class="clock">--:--:--</div>
     `;
