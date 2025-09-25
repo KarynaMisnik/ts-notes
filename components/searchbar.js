@@ -42,64 +42,98 @@ class SearchBar extends HTMLElement {
             border: none;
             }
 
-              #results {
+        #suggestions {
+          border: 1px solid #ccc;
+          max-height: 150px;
+          overflow-y: auto;
+          position: absolute;
+          background: white;
+          width: 300px;
+        }
+        #suggestions div {
+          padding: 0.5rem;
+          cursor: pointer;
+        }
+        #suggestions div:hover {
+          background-color: #f0f0f0;
+        }
+        #results {
           margin-top: 10px;
         }
+        .relative { position: relative; }
             
 </style>
 
 <div class="search-wrapper">
-<div class="search-container">
-<h3>Search by:</h3>
-    <input type="text" id="tenderName" placeholder="tender name" />
-    <button class="btn search-btn">Search</button>
-    </div>
-</div>
- <div id="results"></div>
+        <div class="search-input-container relative">
+          <input type="text" id="tenderName" placeholder="Tender name" autocomplete="off" />
+          <div id="suggestions"></div>
+          <button class="search-btn">Search</button>
+        </div>
+      </div>
+      <div id="results"></div>
 
 `;
 
-    this.tenders = []; // Will hold JSON data
+    this.tenders = [];
+    // Bind method to ensure correct "this"
+    this.showTender = this.showTender.bind(this);
   }
 
   connectedCallback() {
-    // Fetch tender.json when component is attached
+    // Load JSON
     fetch("data/tender.json")
       .then((res) => res.json())
       .then((data) => (this.tenders = data))
       .catch((err) => console.error("Failed to load tenders:", err));
 
-    // Attach event listener to search button
-    const btn = this.shadow.querySelector(".search-btn");
-    btn.addEventListener("click", () => this.searchTender());
+    const input = this.shadow.querySelector("#tenderName");
+    const suggestionsDiv = this.shadow.querySelector("#suggestions");
+    const searchBtn = this.shadow.querySelector(".search-btn");
+
+    // Suggest as user types
+    input.addEventListener("input", () => {
+      const query = input.value.toLowerCase();
+      suggestionsDiv.innerHTML = "";
+      if (!query) return;
+
+      const matches = this.tenders.filter((t) =>
+        t.tender_name.toLowerCase().includes(query)
+      );
+      matches.forEach((tender) => {
+        const div = document.createElement("div");
+        div.textContent = tender.tender_name;
+        div.addEventListener("click", () => {
+          input.value = tender.tender_name;
+          suggestionsDiv.innerHTML = "";
+          this.showTender(tender);
+        });
+        suggestionsDiv.appendChild(div);
+      });
+    });
+
+    // Search button
+    searchBtn.addEventListener("click", () => {
+      const query = input.value.toLowerCase();
+      const foundTender = this.tenders.find(
+        (t) => t.tender_name.toLowerCase() === query
+      );
+      if (foundTender) this.showTender(foundTender);
+      else
+        this.shadow.querySelector("#results").innerHTML =
+          "<p>No tender found with that name</p>";
+    });
   }
 
-  searchTender() {
-    const input = this.shadow.querySelector("#tenderName");
-    const query = input.value.trim().toLowerCase();
-    const resultsDiv = this.shadow.querySelector("#results");
-
-    if (!query) {
-      resultsDiv.innerHTML = "<p>Please type a tender name</p>";
-      return;
-    }
-
-    const foundTender = this.tenders.find(
-      (t) => t.tender_name.toLowerCase() === query
-    );
-
-    if (foundTender) {
-      resultsDiv.innerHTML = `
-        <h4>${foundTender.tender_name}</h4>
-        <p>ID: ${foundTender.tender_id}</p>
-        <p>Notice Date: ${foundTender.notice_date}</p>
-        <p>Close Date: ${foundTender.close_date}</p>
-        <p>Disclosing Date: ${foundTender.disclosing_date}</p>
-        <p>Status: ${foundTender.tender_status}</p>
-      `;
-    } else {
-      resultsDiv.innerHTML = "<p>No tender found with that name</p>";
-    }
+  showTender(tender) {
+    this.shadow.querySelector("#results").innerHTML = `
+      <h4>${tender.tender_name}</h4>
+      <p>ID: ${tender.tender_id}</p>
+      <p>Notice Date: ${tender.notice_date}</p>
+      <p>Close Date: ${tender.close_date}</p>
+      <p>Disclosing Date: ${tender.disclosing_date}</p>
+      <p>Status: ${tender.tender_status}</p>
+    `;
   }
 }
 
