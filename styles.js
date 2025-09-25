@@ -13,6 +13,7 @@ sharedStyles.replaceSync(`
     --primary-color: #2b2b2b;
     --secondary-color: #424242;
     --icon-color: #9e9e9e;
+    --input-background: rgba(43,43,43,0.4);;
    
 
 /* FONTS-FONT SIZE */
@@ -43,6 +44,8 @@ small { font-size: var(--font-size-sm); }
 
 /* BUTTONS */
 
+--btn-background: rgba(43,43,43,0.4); /* light-black-opacity 40%*/
+
 button {
 
   display: inline-block;
@@ -61,9 +64,7 @@ button .button-primary {
 }
 
 button .button-secondary {
-
-background-color: rgba(43,43,43,0.4); /* light-black-opacity 40%*/
-
+background-color: var(--btn-background);
 color: #2b2b2b; 
 }
 

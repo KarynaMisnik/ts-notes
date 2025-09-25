@@ -9,17 +9,49 @@ class SearchBar extends HTMLElement {
 
     this.shadowRoot.innerHTML = `
     <style>
-        .search-container {
+        .search-wrapper {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             margin: 20px 0;
         }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+ }
+
+        input{
+        padding: 1.5rem;
+        font-size: var(--font-size-base);
+        border-radius: 0.5rem;
+        background-color: var(--input-background);
+        border: none;
+        color: var(--primary-color);
+        
+        }
+
+        .search-container *{
+            margin: 0 10px;
+            }
+
+            .search-btn{
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            }
             
 </style>
 
+<div class="search-wrapper">
 <div class="search-container">
-<h3>Search Tenders:</h3>
+<h3>Search by:</h3>
+    <input type="text" placeholder="tender name" />
+    <button class="btn search-btn">Search</button>
+    </div>
+    <div class="date-range-container">
+    </div>
 </div>
 
 `;
