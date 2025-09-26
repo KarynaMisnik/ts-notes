@@ -115,6 +115,7 @@ class SearchBar extends HTMLElement {
     // Search button
     searchBtn.addEventListener("click", () => {
       const query = input.value.toLowerCase();
+
       const foundTender = this.tenders.find(
         (t) => t.tender_name.toLowerCase() === query
       );
