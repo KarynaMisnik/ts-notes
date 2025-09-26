@@ -16,7 +16,7 @@ class SearchBar extends HTMLElement {
             margin: 20px 0;
         }
 
-        .search-container {
+        .search-input-container {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -32,7 +32,7 @@ class SearchBar extends HTMLElement {
         
         }
 
-        .search-container *{
+        .search-input-container *{
             margin: 0 10px;
             }
 
@@ -43,7 +43,6 @@ class SearchBar extends HTMLElement {
             }
 
         #suggestions {
-          border: 1px solid #ccc;
           max-height: 150px;
           overflow-y: auto;
           position: absolute;
@@ -66,6 +65,7 @@ class SearchBar extends HTMLElement {
 
 <div class="search-wrapper">
         <div class="search-input-container relative">
+        <h3>Search by:</h3>
           <input type="text" id="tenderName" placeholder="Tender name" autocomplete="off" />
           <div id="suggestions"></div>
           <button class="search-btn">Search</button>
