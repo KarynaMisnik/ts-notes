@@ -4,6 +4,7 @@
 - [First Component](#first-component)
   - [Default vs Named Exports ](#default-vs-named-exports)
 - [Writing Markup](#writing-markup)
+- [JavaScript in JSX with Curly Braces](#javascript-in-jsx-with-curly-braces)
 
 ## Introduction
 
@@ -130,3 +131,16 @@ JSX requires all tags to be closed: self-closing like <img /> and wrapping tags 
 
 **Study Material:**<br>
 [Writing Markup with JSX](https://react.dev/learn/writing-markup-with-jsx)
+
+## Javascript in JSX with curly braces
+
+| Use case                          | Example TSX/JSX                                                                       | Notes                                               |
+| --------------------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| Insert JS variable or expression  | `tsx<br>const name = "Alice";<br>return <h1>Hello, {name}!</h1>;`                     | Evaluates any JS expression                         |
+| Inline CSS / style object         | `tsx<br>return <div style={{ color: "red", fontSize: "20px" }}>Hi</div>;`             | Outer `{}` = TSX expression, inner `{}` = JS object |
+| Dynamic props                     | `tsx<br>const disabled = true;<br>return <button disabled={disabled}>Click</button>;` | Can pass variables or expressions to props          |
+| Objects / arrays in expressions   | `tsx<br>const user = { name: "Bob" };<br>return <p>{user.name}</p>;`                  | Any JS object/array can be inserted                 |
+| Inline calculations / expressions | `tsx<br>const a = 2, b = 3;<br>return <p>{a + b}</p>;`                                | Can compute values on the fly                       |
+| Mapping arrays to elements        | `tsx<br>const nums = [1,2,3];<br>return <ul>{nums.map(n => <li>{n}</li>)}</ul>;`      | Loop through arrays in JSX                          |
+
+[!IMPORTANT] In TSX/JSX, {} always means “evaluate this JavaScript expression here.”
