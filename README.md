@@ -1,6 +1,11 @@
 # Typescript Notes
 
 - [Intoduction](#introduction)
+- [The Backstory](#the-backstory)
+- [How TS runs](#how-ts-runs)
+- [Type System Design in TypeScript](#type-system-design-in-typescript)
+  - [How Are Types Checked?](#how-are-types-checked)
+  - [How Are Types Inferred?](#how-are-types-inferred)
 - [First Component](#first-component)
   - [Default vs Named Exports ](#default-vs-named-exports)
 - [Writing Markup](#writing-markup)
